@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-vietnam-pro: "Be Vietnam Pro", sans-serif;
+}
+
+
+@layer base {
+  html {
+    @apply font-vietnam-pro;
+  }
+}
