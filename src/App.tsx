@@ -17,7 +17,7 @@ function App() {
           <Basic />
         </fieldset>
         <fieldset className="space-y-6">
-          <Label legend={"Fidding"} />
+          <Label legend={"Fidding Habits & Diet"} />
           <Fidding />
         </fieldset>
         <fieldset className="space-y-6">
