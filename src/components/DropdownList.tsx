@@ -1,45 +1,61 @@
-import { useState } from "react";
-import ArrowDropDown from "../../public/arrow_drop_down.svg";
-
+import { useEffect, useRef, useState } from "react";
+import ArrowDropDown from "../assets/icons/arrow_drop_down.svg?react";
 
 type DropDownListProps = {
-    label: string;
-    list: string[];
-}
-function DropdownList({ label, list }: DropDownListProps) {
+  label: string;
+  list: string[];
+  setCount?: (n: string) => void;
+};
+
+function DropdownList({ label, list, setCount }: DropDownListProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
-    !e.target ? setOpen(false) : setOpen(!open);
-  }
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
 
-//   const options = ["under 1 year", "1 - 2 years", "3 - 7 years", "8+ years"];
-//   const label = "Age in years";
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   return (
-    <div className="relative w-full">
-      <p className="text-secondary ml-1 text-sm font-semibold">{label}</p>
+    <div ref={containerRef} className="relative flex w-full flex-col gap-1">
+      <p className="text-secondary m-0 ml-1 text-sm font-semibold">{label}</p>
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="bg-lightyellow border-outline/30 focus:border-main text-brown-text relative w-full rounded-t-xl border-0 border-b p-3 text-start transition-all m-0"
+        className="bg-lightyellow border-outline/30 focus:border-main text-brown-text relative m-0 h-10 w-full rounded-t-xl border-0 border-b p-2 text-start transition-all overflow-hidden"
       >
-        {selected ?? "Select an option"}
-        <div className="absolute inset-y-0 right-3 flex items-center">
-          <img src={ArrowDropDown} alt="arrow drop down" className="h-8 w-8" />
-        </div>
+        {selected ?? <p className="text-secondary/60">Select...</p>}
+        {/* <div className="absolute inset-y-4 right-2 flex items-center"> */}
+          {/* <img src={ArrowDropDown} alt="arrow drop down" className="h-8 w-8" /> */}
+          <ArrowDropDown className="absolute inset-y-1 right-0 flex h-8 w-8 items-center" />
+        {/* </div> */}
       </button>
       {open && (
-        <ul className="text-secondary bg-lightyellow absolute z-10 w-full rounded-lg border-none shadow-lg">
+        <ul className="text-secondary bg-lightyellow absolute top-16 z-10 mr-1 max-h-50 w-full overflow-auto rounded-lg border-none shadow-lg">
           {list.map((option) => (
             <li
               key={option}
               onClick={() => {
                 setSelected(option);
+                setCount?.(option);
                 setOpen(false);
               }}
-              className="cursor-pointer px-4 py-2 hover:bg-white hover:last:rounded-b-lg"
+              className="cursor-pointer px-2 py-2 hover:bg-white hover:last:rounded-b-lg"
             >
               {option}
             </li>

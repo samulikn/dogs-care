@@ -1,14 +1,17 @@
+import ProfilePhoto from "../assets/marta.webp";
 function Hero() {
   return (
-    <section className="flex justify-center gap-4 items-cente">
-      <div className="w-20 h-20 rounded-xl overflow-hidden shadow-sm shrink-0">
-        <img src="../assets/marta.jpeg" alt="profile photo" className="w-full h-full" />
+    <section className="items-cente flex justify-center gap-4">
+      <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl shadow-sm">
+        <img src={ProfilePhoto} alt="profile photo" className="h-full w-full" />
       </div>
       <div>
-        <h1 className="font-plus-jakarta mx-auto text-3xl font-extrabold tracking-tight text-primary">
+        <h1 className="font-plus-jakarta text-primary mx-auto text-3xl font-extrabold tracking-tight">
           Tell us about your pup
         </h1>
-        <p className="text-secondary font-medium">Help us personalize the Kindred Paws experience.</p>
+        <p className="text-secondary font-medium">
+          Help us personalize the Kindred Paws experience.
+        </p>
       </div>
     </section>
   );
