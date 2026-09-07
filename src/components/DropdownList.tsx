@@ -9,7 +9,7 @@ type DropDownListProps = {
 
 function DropdownList({ label, list, setCount }: DropDownListProps) {
   const [open, setOpen] = useState<boolean>(false);
-  const [selected, setSelected] = useState<string>(null);
+  const [selected, setSelected] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,13 +37,10 @@ function DropdownList({ label, list, setCount }: DropDownListProps) {
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="bg-lightyellow border-outline/30 focus:border-main text-brown-text relative m-0 h-10 w-full rounded-t-xl border-0 border-b p-2 text-start transition-all overflow-hidden"
+        className="bg-lightyellow border-outline/30 focus:border-main text-brown-text relative m-0 h-10 w-full overflow-hidden rounded-t-xl border-0 border-b p-2 text-start transition-all"
       >
         {selected ?? <p className="text-secondary/60">Select...</p>}
-        {/* <div className="absolute inset-y-4 right-2 flex items-center"> */}
-          {/* <img src={ArrowDropDown} alt="arrow drop down" className="h-8 w-8" /> */}
-          <ArrowDropDown className="absolute inset-y-1 right-0 flex h-8 w-8 items-center" />
-        {/* </div> */}
+        <ArrowDropDown className="absolute inset-y-1 right-0 flex h-8 w-8 items-center" />
       </button>
       {open && (
         <ul className="text-secondary bg-lightyellow absolute top-16 z-10 mr-1 max-h-50 w-full overflow-auto rounded-lg border-none shadow-lg">
