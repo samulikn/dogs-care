@@ -1,4 +1,8 @@
-function Label({ legend }) {
+type LabelProps = {
+  legend: string;
+}
+
+function Label({ legend }: LabelProps) {
   return (
     <>
       <h2 className="text-primary mb-2 flex items-center gap-2 text-xl font-bold">
