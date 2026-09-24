@@ -70,9 +70,9 @@ function Fidding() {
                       /> */}
                       <Input
                         id={"portion" + i}
-                        label="Grams"
-                        type="number"
-                        placeholder="60"
+                        label="Portion"
+                        type="text"
+                        placeholder='ex. "1 cup"'
                       />
                     </div>
                   </div>
@@ -85,7 +85,7 @@ function Fidding() {
             htmlFor="foodrestrictions"
             className="text-secondary m-0 ml-1 text-sm font-semibold"
           >
-            Any food allergies or restrictions?
+            Any food allergies, restrictions or fidding features?
           </label>
           <textarea
             id="foodrestrictions"
