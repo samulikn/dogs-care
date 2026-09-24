@@ -48,7 +48,7 @@ function App() {
         honeypotName="bot-field"
         className="space-y-12"
       >
-        {({ success, error }) => (
+        {({ success, error }: { success: boolean; error: boolean }) => (
           <>
             <Honeypot />
             {success && (
