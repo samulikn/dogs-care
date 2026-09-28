@@ -44,11 +44,11 @@ function App() {
       <Hero />
       <NetlifyForm
         name="dogs-questionnarie"
-        action="/succeess"
-        honeypotName="bot-field"
+        // action="/succeess"
+        // honeypotName="bot-field"
         className="space-y-12"
       >
-        {({ success, error }: { success: boolean; error: boolean }) => (
+        {/* {({ success, error }: { success: boolean; error: boolean }) => (
           <>
             <Honeypot />
             {success && (
@@ -59,7 +59,8 @@ function App() {
                 Something went wrong, please try again.
               </p>
             )}
-            {!success && (
+            {!success && 
+            (
               <>
                 <fieldset className="space-y-6">
                   <Label legend={"Basic info"} />
@@ -95,9 +96,45 @@ function App() {
                   </button>
                 </div>
               </>
-            )}
+            )
+            }
           </>
-        )}
+        )} */}
+         <>
+                <fieldset className="space-y-6">
+                  <Label legend={"Basic info"} />
+                  <Basic />
+                </fieldset>
+                <fieldset className="space-y-6">
+                  <Label legend={"Fidding Habits & Diet"} />
+                  <Fidding />
+                </fieldset>
+                <fieldset className="space-y-6">
+                  <Label legend={"Exercise & Activity Level"} />
+                  <Activity />
+                </fieldset>
+                <fieldset className="space-y-6">
+                  <Label legend={"Walking Routine"} />
+                  <Walking />
+                </fieldset>
+                <fieldset className="space-y-6">
+                  <Label legend={"Social Behaviour"} />
+                  <Social />
+                </fieldset>
+                <fieldset className="space-y-6">
+                  <Label legend={"Additional Info"} />
+                  <Addinfo />
+                </fieldset>
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    // onClick={() => handleSubmit}
+                    className="bg-primary w-full rounded-full border-2 py-5 text-lg font-extrabold text-white shadow-md transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    Send Questionnaire
+                  </button>
+                </div>
+              </>
       </NetlifyForm>
       <footer className="text-secondary my-3 text-center text-xs font-medium italic">
         All data is used exclusively for providing better care for your pup.
