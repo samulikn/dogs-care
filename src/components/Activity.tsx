@@ -45,6 +45,35 @@ function Activity() {
           </label>
         </div>
       </div>
+      <div className="flex flex-col gap-1">
+        <h3 className="text-secondary m-0 ml-1 text-sm font-semibold">
+          Favourite activities?
+        </h3>
+        <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
+          <label htmlFor="fetch" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-2 py-2 transition-all hover:shadow-md">
+            <input id="fetch"
+            className="hidden" type="checkbox" />
+            <span className="text-sm font-medium">Fetch</span>
+          </label>
+          <label htmlFor="tugofwar" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
+            <input id="tugofwar" className="hidden" type="checkbox" />
+            <span className="text-sm font-medium">Tug of war</span>
+          </label>
+          <label htmlFor="training" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
+            <input id="training" className="hidden" type="checkbox" />
+            <span className="text-sm font-medium">Agility/training</span>
+          </label>
+          <label htmlFor="running" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
+            <input id="running" className="hidden" type="checkbox" />
+            <span className="text-sm font-medium">Free running</span>
+          </label>
+          <label htmlFor="swimming" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
+            <input id="swimming" className="hidden" type="checkbox" />
+            <span className="text-sm font-medium">Swimming</span>
+          </label>
+        </div>
+      </div>
+      {/* </div> */}
     </>
   );
 }
