@@ -6,7 +6,7 @@ import Walking from "./components/Walking";
 import Activity from "./components/Activity";
 import Social from "./components/Social";
 import Addinfo from "./components/Addinfo";
-import { NetlifyForm, Honeypot } from "react-netlify-forms";
+import { NetlifyForm } from "react-netlify-forms";
 // import jsPDF from "jspdf";
 // import autoTable from "jspdf-autotable";
 
