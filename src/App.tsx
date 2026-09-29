@@ -15,17 +15,6 @@ function App() {
     "idle",
   );
 
-  // const handleGeneratePDF = (formData: Record<string, string>) => {
-  //   const doc = new jsPDF();
-  //   doc.text("Form Submission", 14, 16);
-  //   autoTable(doc, {
-  //     startY: 20,
-  //     head: [["Field", "Value"]],
-  //     body: Object.entries(formData),
-  //   });
-  //   return doc.output("blob");
-  // };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
@@ -44,6 +33,11 @@ function App() {
       });
       if (!res.ok) throw new Error();
       setStatus("done");
+      console.log(
+        new URLSearchParams(
+          formData as unknown as Record<string, string>,
+        ).toString(),
+      );
     } catch {
       setStatus("error");
     }
