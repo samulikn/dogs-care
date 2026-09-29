@@ -21,6 +21,7 @@ function Social() {
               className="border-secondary h-5 w-5 cursor-pointer appearance-none rounded-full border-2 checked:border-6"
               name="social"
               type="radio"
+              value="Very friendly"
             />
           </label>
           <label className="bg-radio-container border-outline/10 hover:bg-lightyellow flex cursor-pointer items-center justify-between rounded-xl border p-4 hover:shadow-md">
@@ -35,6 +36,7 @@ function Social() {
               className="border-secondary h-5 w-5 cursor-pointer appearance-none rounded-full border-2 checked:border-6"
               name="social"
               type="radio"
+              value="Selective"
             />
           </label>
           <label className="bg-radio-container border-outline/10 hover:bg-lightyellow flex cursor-pointer items-center justify-between rounded-xl border p-4 hover:shadow-md">
@@ -49,6 +51,7 @@ function Social() {
               className="border-secondary h-5 w-5 cursor-pointer appearance-none rounded-full border-2 checked:border-6"
               name="social"
               type="radio"
+              value="Nervous around dog"
             />
           </label>
         </div>

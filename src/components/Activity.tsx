@@ -19,6 +19,7 @@ function Activity() {
               className="border-secondary h-5 w-5 shrink-0 cursor-pointer appearance-none rounded-full border-2 checked:border-6"
               name="activity"
               type="radio"
+              value="Low, couch potato"
             />
           </label>
           <label className="bg-radio-container border-outline/10 hover:bg-lightyellow flex cursor-pointer items-center justify-between rounded-xl border p-4 hover:shadow-md">
@@ -30,6 +31,7 @@ function Activity() {
               className="border-secondary h-5 w-5 shrink-0 cursor-pointer appearance-none rounded-full border-2 checked:border-6"
               name="activity"
               type="radio"
+              value="Moderate"
             />
           </label>
           <label className="bg-radio-container border-outline/10 hover:bg-lightyellow flex cursor-pointer items-center justify-between rounded-xl border p-4 hover:shadow-md">
@@ -41,6 +43,7 @@ function Activity() {
               className="border-secondary h-5 w-5 shrink-0 cursor-pointer appearance-none rounded-full border-2 checked:border-6"
               name="activity"
               type="radio"
+              value="High, always running"
             />
           </label>
         </div>
@@ -51,24 +54,24 @@ function Activity() {
         </h3>
         <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
           <label htmlFor="fetch" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-2 py-2 transition-all hover:shadow-md">
-            <input id="fetch" name="favoriteActivity"
+            <input id="fetch" name="favoriteActivity" value="Fetch"
             className="hidden" type="checkbox" />
             <span className="text-sm font-medium">Fetch</span>
           </label>
           <label htmlFor="tugofwar" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="tugofwar" name="favoriteActivity" className="hidden" type="checkbox" />
+            <input id="tugofwar" name="favoriteActivity" className="hidden" type="checkbox" value="Tug of war" />
             <span className="text-sm font-medium">Tug of war</span>
           </label>
           <label htmlFor="training" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="training" name="favoriteActivity" className="hidden" type="checkbox" />
+            <input id="training" name="favoriteActivity" className="hidden" type="checkbox" value="Agility/training" />
             <span className="text-sm font-medium">Agility/training</span>
           </label>
           <label htmlFor="running" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="running" name="favoriteActivity" className="hidden" type="checkbox" />
+            <input id="running" name="favoriteActivity" className="hidden" type="checkbox" value="Free running" />
             <span className="text-sm font-medium">Free running</span>
           </label>
           <label htmlFor="swimming" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="swimming" name="favoriteActivity" className="hidden" type="checkbox" />
+            <input id="swimming" name="favoriteActivity" className="hidden" type="checkbox" value="Swimming" />
             <span className="text-sm font-medium">Swimming</span>
           </label>
         </div>

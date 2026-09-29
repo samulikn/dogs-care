@@ -35,7 +35,9 @@ function DropdownList({ label, list, setCount }: DropDownListProps) {
     <div ref={containerRef} className="relative flex w-full flex-col gap-1">
       <p className="text-secondary m-0 ml-1 text-sm font-semibold">{label}</p>
       <button
+        name={label}
         type="button"
+        value={selected}
         onClick={() => setOpen(!open)}
         className="bg-lightyellow border-outline/30 focus:border-main text-brown-text relative m-0 h-10 w-full overflow-hidden rounded-t-xl border-0 border-b p-2 text-start transition-all"
       >
