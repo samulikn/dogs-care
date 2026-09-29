@@ -9,7 +9,7 @@ type DropDownListProps = {
 
 function DropdownList({ label, list, setCount }: DropDownListProps) {
   const [open, setOpen] = useState<boolean>(false);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
