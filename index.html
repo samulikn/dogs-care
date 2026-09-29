@@ -14,6 +14,15 @@
 </head>
 
 <body class="w-full min-h-full bg-background">
+  <form name="dogs-questionnaire" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="dogname" required />
+    <input type="radio" name="activity" />
+    <input type="checkbox" name="favoriteActivity" />
+    <input type="radio" name="social" />
+    <textarea name="addinfo"></textarea>
+    <input name="bot-field" />
+  </form>
+
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
