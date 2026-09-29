@@ -18,9 +18,11 @@ function Input({ id, label, type, placeholder }: InputProps) {
       </label>
       <input
         id={id}
+        name={id}
         type={type}
         placeholder={placeholder}
         maxLength={20}
+        required
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           e.target.value;
         }}

@@ -51,24 +51,24 @@ function Activity() {
         </h3>
         <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
           <label htmlFor="fetch" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-2 py-2 transition-all hover:shadow-md">
-            <input id="fetch"
+            <input id="fetch" name="favoriteActivity"
             className="hidden" type="checkbox" />
             <span className="text-sm font-medium">Fetch</span>
           </label>
           <label htmlFor="tugofwar" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="tugofwar" className="hidden" type="checkbox" />
+            <input id="tugofwar" name="favoriteActivity" className="hidden" type="checkbox" />
             <span className="text-sm font-medium">Tug of war</span>
           </label>
           <label htmlFor="training" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="training" className="hidden" type="checkbox" />
+            <input id="training" name="favoriteActivity" className="hidden" type="checkbox" />
             <span className="text-sm font-medium">Agility/training</span>
           </label>
           <label htmlFor="running" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="running" className="hidden" type="checkbox" />
+            <input id="running" name="favoriteActivity" className="hidden" type="checkbox" />
             <span className="text-sm font-medium">Free running</span>
           </label>
           <label htmlFor="swimming" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="swimming" className="hidden" type="checkbox" />
+            <input id="swimming" name="favoriteActivity" className="hidden" type="checkbox" />
             <span className="text-sm font-medium">Swimming</span>
           </label>
         </div>
