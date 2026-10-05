@@ -5,7 +5,7 @@ type DropDownListProps = {
   label: string;
   list: string[];
   id?: number;
-  setValue?: (n: string, id?: number) => void;
+  setValue: (n: string, id?: number | undefined) => void;
 };
 
 function DropdownList({ label, list, id, setValue }: DropDownListProps) {
@@ -50,7 +50,7 @@ function DropdownList({ label, list, id, setValue }: DropDownListProps) {
               key={option}
               onClick={() => {
                 setSelected(option);
-                {id ? setValue?.(option, id) : setValue(option)};
+                {id ? setValue(option, id) : setValue(option)};
                 setOpen(false);
               }}
               className="cursor-pointer px-2 py-2 hover:bg-white hover:last:rounded-b-lg"
