@@ -2,9 +2,9 @@ import { useState } from "react";
 import DropdownList from "./DropdownList";
 
 function Walking() {
-  const [walksPerDay, setWalksPerDay] = useState<number | null>(null);
+  const [walksPerDay, setWalksPerDay] = useState<number | undefined>(undefined);
   const [walk, setWalk] = useState<
-    { time: string | null; duration: string | null }[]
+    { time: string | undefined; duration: string | undefined }[]
   >([]);
 
   const handleWalks = (n: string) => {

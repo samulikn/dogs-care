@@ -5,7 +5,7 @@ import Input from "./Input";
 function Fidding() {
   const [mealsPerDay, setMealsPerDay] = useState<number | undefined>(undefined);
   const [mealTime, setMealTime] = useState<
-    { time: string | null; portion: string | null }[]
+    { time: string | undefined; portion: string | undefined }[]
   >([]);
 
   const setCountOfMeals = (n: string) => {
@@ -18,7 +18,7 @@ function Fidding() {
     setMealTime(mealsArray);
   };
 
-  const addMealTime = (value: string, id: number) => {
+  const addMealTime = (value: string, id?: number) => {
     const filteredMeal = mealTime[id];
     filteredMeal.time = value;
     const newMealsArray = { ...mealTime, filteredMeal };
@@ -99,7 +99,7 @@ function Fidding() {
         <input
           type="text"
           name="meals"
-          value={mealTime.toString() ?? ""}
+          value={mealTime.join("/n") ?? ""}
           readOnly
           hidden
         />
