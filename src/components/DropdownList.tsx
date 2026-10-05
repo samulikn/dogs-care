@@ -5,7 +5,7 @@ type DropDownListProps = {
   label: string;
   list: string[];
   id?: number;
-  setValue?: (n: string, id?: number) => void;
+  setValue?: (n: string, id: number | undefined) => void;
 };
 
 function DropdownList({ label, list, id, setValue }: DropDownListProps) {

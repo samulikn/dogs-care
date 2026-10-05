@@ -11,14 +11,14 @@ function Fidding() {
   const setCountOfMeals = (n: string) => {
     const newN: number = Number(n);
     const mealsArray = Array.from({ length: newN }, () => ({
-      time: null,
-      portion: null,
+      time: undefined,
+      portion: undefined,
     }));
     setMealsPerDay(newN);
     setMealTime(mealsArray);
   };
 
-  const addMealTime = (value: string, id?: number) => {
+  const addMealTime = (value: string, id: number) => {
     const filteredMeal = mealTime[id];
     filteredMeal.time = value;
     const newMealsArray = { ...mealTime, filteredMeal };
@@ -96,13 +96,13 @@ function Fidding() {
               ))}
           </ul>
         )}
-        <input
+        {/* <input
           type="text"
           name="meals"
-          value={mealTime.join("/n") ?? ""}
+          value={mealTime.join().toString() ?? ""}
           readOnly
           hidden
-        />
+        /> */}
         <div className="">
           <label
             htmlFor="foodrestrictions"

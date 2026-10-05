@@ -10,8 +10,8 @@ function Walking() {
   const handleWalks = (n: string) => {
     const newN: number = Number(n);
     const walkArray = Array.from({ length: newN }, () => ({
-      time: null,
-      duration: null,
+      time: undefined,
+      duration: undefined,
     }));
     setWalksPerDay(newN);
     setWalk(walkArray);
