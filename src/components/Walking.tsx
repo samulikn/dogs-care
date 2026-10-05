@@ -3,10 +3,32 @@ import DropdownList from "./DropdownList";
 
 function Walking() {
   const [walksPerDay, setWalksPerDay] = useState<number | null>(null);
+  const [walk, setWalk] = useState<
+    { time: string | null; duration: string | null }[]
+  >([]);
 
-  const getCountFromChild = (n: string) => {
+  const handleWalks = (n: string) => {
     const newN: number = Number(n);
+    const walkArray = Array.from({ length: newN }, () => ({
+      time: null,
+      duration: null,
+    }));
     setWalksPerDay(newN);
+    setWalk(walkArray);
+  };
+
+  const setWalkTime = (value: string, id: number) => {
+    // const updated = walk.map((prevValue,i) => {i === id ? prevValue.time = value : prevValue})
+    const updated = walk.map((v, i) => (i === id ? { ...v, time: value } : v));
+    setWalk(updated);
+  };
+
+  const setWalkDuration = (value: string, id: number) => {
+    // const updated = walk.map((prevValue,i) => {i === id ? prevValue.time = value : prevValue})
+    const updated = walk.map((v, i) =>
+      i === id ? { ...v, duration: value } : v,
+    );
+    setWalk(updated);
   };
 
   return (
@@ -15,9 +37,16 @@ function Walking() {
         <DropdownList
           label={"How many walks per day?"}
           list={["1", "2", "3", "4", "5"]}
-          setCount={getCountFromChild}
+          setValue={handleWalks}
         />
       </div>
+      <input
+        type="number"
+        name="mealsPerDay"
+        value={walksPerDay ?? 0}
+        hidden
+        readOnly
+      />
       {walksPerDay && (
         <ul className="flex flex-col gap-3">
           {Array(walksPerDay)
@@ -51,6 +80,8 @@ function Walking() {
                       "21:00 - 22:00",
                       "22:00 - 23:00",
                     ]}
+                    id={i}
+                    setValue={setWalkTime}
                   />
 
                   <DropdownList
@@ -62,12 +93,37 @@ function Walking() {
                       "45 - 60 min",
                       "> 1 h",
                     ]}
+                    id={i}
+                    setValue={setWalkDuration}
                   />
                 </div>
               </li>
             ))}
         </ul>
       )}
+      <input
+        type="text"
+        name="walks"
+        value={walk.join("\n") ?? ""}
+        hidden
+        readOnly
+      />
+      <div className="">
+        <label
+          htmlFor="walkingspecifics"
+          className="text-secondary m-0 ml-1 text-sm font-semibold"
+        >
+          Any info about walking?
+        </label>
+        <textarea
+          id="walkingspecifics"
+          name="walkingspecifics"
+          maxLength={4000}
+          className="bg-lightyellow text-secondary border-outline/30 focus:border-primary w-full resize-none overflow-auto rounded-t-xl border-0 border-b px-4 py-3 transition-all"
+          placeholder="Any important information about walking..."
+          rows={3}
+        ></textarea>
+      </div>
     </>
   );
 }

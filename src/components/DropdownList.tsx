@@ -4,10 +4,11 @@ import ArrowDropDown from "../assets/icons/arrow_drop_down.svg?react";
 type DropDownListProps = {
   label: string;
   list: string[];
-  setCount?: (n: string) => void;
+  id?: number;
+  setValue?: (n: string, id?: number) => void;
 };
 
-function DropdownList({ label, list, setCount }: DropDownListProps) {
+function DropdownList({ label, list, id, setValue }: DropDownListProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<string | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,9 +36,7 @@ function DropdownList({ label, list, setCount }: DropDownListProps) {
     <div ref={containerRef} className="relative flex w-full flex-col gap-1">
       <p className="text-secondary m-0 ml-1 text-sm font-semibold">{label}</p>
       <button
-        name={label}
         type="button"
-        value={selected}
         onClick={() => setOpen(!open)}
         className="bg-lightyellow border-outline/30 focus:border-main text-brown-text relative m-0 h-10 w-full overflow-hidden rounded-t-xl border-0 border-b p-2 text-start transition-all"
       >
@@ -51,7 +50,7 @@ function DropdownList({ label, list, setCount }: DropDownListProps) {
               key={option}
               onClick={() => {
                 setSelected(option);
-                setCount?.(option);
+                setValue?.(option, id);
                 setOpen(false);
               }}
               className="cursor-pointer px-2 py-2 hover:bg-white hover:last:rounded-b-lg"
