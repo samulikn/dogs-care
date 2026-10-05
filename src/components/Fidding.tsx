@@ -19,10 +19,10 @@ function Fidding() {
   };
 
   const addMealTime = (value: string, id: number) => {
-    const filteredMeal = mealTime[id];
-    filteredMeal.time = value;
-    const newMealsArray = { ...mealTime, filteredMeal };
-    setMealTime(newMealsArray);
+    const updated = mealTime.map((v, i) =>
+      i === id ? { ...v, time: value } : v,
+    );
+    setMealTime(updated);
   };
 
   // const addMealPortion = (value: string, id: number) => {
