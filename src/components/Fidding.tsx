@@ -8,9 +8,9 @@ function Fidding() {
     { time: string | undefined; portion: string | undefined }[]
   >([]);
 
-  const setCountOfMeals = (n: string) => {
-    const newN: number = Number(n);
-    const mealsArray = Array.from({ length: newN }, () => ({
+  const setCountOfMeals = (value: string, i: number) => {
+    const newN: number = Number(value);
+    const mealsArray = Array.from({ length: i }, () => ({
       time: undefined,
       portion: undefined,
     }));
@@ -18,9 +18,9 @@ function Fidding() {
     setMealTime(mealsArray);
   };
 
-  const addMealTime = (value: string, id: number) => {
-    const updated = mealTime.map((v, i) =>
-      i === id ? { ...v, time: value } : v,
+  const addMealTime = (value: string, i: number) => {
+    const updated = mealTime.map((v, index) =>
+      index === i ? { ...v, time: value } : v,
     );
     setMealTime(updated);
   };
@@ -39,6 +39,7 @@ function Fidding() {
           <DropdownList
             label={"How many meals per day?"}
             list={["1", "2", "3", "4"]}
+            id={["1", "2", "3", "4"].length}
             setValue={setCountOfMeals}
           />
           <input

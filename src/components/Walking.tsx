@@ -7,9 +7,9 @@ function Walking() {
     { time: string | undefined; duration: string | undefined }[]
   >([]);
 
-  const handleWalks = (n: string) => {
-    const newN: number = Number(n);
-    const walkArray = Array.from({ length: newN }, () => ({
+  const handleWalks = (value: string, i: number) => {
+    const newN: number = Number(value);
+    const walkArray = Array.from({ length: i }, () => ({
       time: undefined,
       duration: undefined,
     }));
@@ -17,16 +17,18 @@ function Walking() {
     setWalk(walkArray);
   };
 
-  const setWalkTime = (value: string, id: number) => {
+  const setWalkTime = (value: string, i: number) => {
     // const updated = walk.map((prevValue,i) => {i === id ? prevValue.time = value : prevValue})
-    const updated = walk.map((v, i) => (i === id ? { ...v, time: value } : v));
+    const updated = walk.map((v, index) =>
+      index === i ? { ...v, time: value } : v,
+    );
     setWalk(updated);
   };
 
-  const setWalkDuration = (value: string, id: number) => {
+  const setWalkDuration = (value: string, i: number) => {
     // const updated = walk.map((prevValue,i) => {i === id ? prevValue.time = value : prevValue})
-    const updated = walk.map((v, i) =>
-      i === id ? { ...v, duration: value } : v,
+    const updated = walk.map((v, index) =>
+      index === i ? { ...v, duration: value } : v,
     );
     setWalk(updated);
   };
@@ -37,6 +39,7 @@ function Walking() {
         <DropdownList
           label={"How many walks per day?"}
           list={["1", "2", "3", "4", "5"]}
+          id={["1", "2", "3", "4", "5"].length}
           setValue={handleWalks}
         />
       </div>
