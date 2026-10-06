@@ -1,26 +1,17 @@
+import { useState } from "react";
 import DropdownList from "./DropdownList";
 import Input from "./Input";
 
 function Basic() {
+  const [age, setAge] = useState<string | undefined>(undefined);
+
+  const handleChangeAge = (value: string, i: number) => {
+    if (value && i === 0) setAge(value);
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {/* <div className="flex flex-col gap-1">
-          <label
-            className="text-secondary m-0 ml-1 text-sm font-semibold"
-            htmlFor="dogname"
-          >
-            Dog's name
-          </label>
-          <input
-            id="dogname"
-            type="text"
-            placeholder="e.g. Marta"
-            maxLength={20}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {e.target.value}}
-            className="bg-lightyellow border-outline/30 focus:border-main text-brown-text h-10 w-full appearance-none rounded-t-xl border-0 border-b p-2 transition-all"
-          />
-        </div> */}
         <Input
           id="dogname"
           label="Dog's name"
@@ -30,7 +21,10 @@ function Basic() {
         <DropdownList
           label={"Age in years"}
           list={["under 1 year", "1 - 2 years", "3 - 7 years", "8+ years"]}
+          id={0}
+          setValue={handleChangeAge}
         />
+        <input type="text" name="Age" value={age ?? ""} readOnly hidden />
       </div>
     </>
   );

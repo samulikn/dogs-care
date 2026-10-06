@@ -3,12 +3,34 @@ import DropdownList from "./DropdownList";
 import Input from "./Input";
 
 function Fidding() {
-  const [mealsPerDay, setMealsPerDay] = useState<number | null>(null);
+  const [mealsPerDay, setMealsPerDay] = useState<number | undefined>(undefined);
+  const [mealTime, setMealTime] = useState<
+    { time: string | undefined; portion: string | undefined }[]
+  >([]);
 
-  const getCountFromChild = (n: string) => {
-    const newN: number = Number(n);
+  const setCountOfMeals = (value: string, i: number) => {
+    const newN: number = Number(value);
+    const mealsArray = Array.from({ length: i }, () => ({
+      time: undefined,
+      portion: undefined,
+    }));
     setMealsPerDay(newN);
+    setMealTime(mealsArray);
   };
+
+  const addMealTime = (value: string, i: number) => {
+    const updated = mealTime.map((v, index) =>
+      index === i ? { ...v, time: value } : v,
+    );
+    setMealTime(updated);
+  };
+
+  // const addMealPortion = (value: string, id: number) => {
+  //   const filteredMeal = meals[id];
+  //   filteredMeal.portion = value;
+  //   const newMealsArray = { ...meals, filteredMeal };
+  //   setMeals(newMealsArray);
+  // };
 
   return (
     <>
@@ -17,7 +39,15 @@ function Fidding() {
           <DropdownList
             label={"How many meals per day?"}
             list={["1", "2", "3", "4"]}
-            setCount={getCountFromChild}
+            id={["1", "2", "3", "4"].length}
+            setValue={setCountOfMeals}
+          />
+          <input
+            type="number"
+            name="mealsPerDay"
+            value={mealsPerDay ?? 0}
+            hidden
+            readOnly
           />
         </div>
         {mealsPerDay && (
@@ -28,12 +58,11 @@ function Fidding() {
                 <li
                   key={"meal" + i}
                   className="[&_label]:text-secondary flex flex-nowrap gap-3 [&_div]:space-y-1 [&_label]:ml-1 [&_label]:text-sm [&_label]:font-semibold"
-                  // grid grid-flow-col place-items-center
                 >
                   <p className="pt-8">{i + 1}.</p>
                   <div className="flex w-full gap-4">
                     <DropdownList
-                      label={"Time slot"}
+                      label="Time slot"
                       list={[
                         "6:00 - 7:00",
                         "7:00 - 8:00",
@@ -52,27 +81,15 @@ function Fidding() {
                         "20:00 - 21:00",
                         "21:00 - 22:00",
                       ]}
+                      id={i}
+                      setValue={addMealTime}
                     />
-
                     <div className="w-1/2 shrink-0">
-                      {/* <label
-                        htmlFor={"portion" + i}
-                        className="text-secondary m-0 ml-1 text-sm font-semibold"
-                      >
-                        Gram per portion
-                      </label>
-                      <input
-                        id={"portion" + i}
-                        type="number"
-                        placeholder="120"
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {e.target.value}}
-                        className="bg-lightyellow border-outline/30 focus:border-main text-brown-text w-full appearance-none rounded-t-xl border-0 border-b p-3 text-center transition-all"
-                      /> */}
                       <Input
-                        id={"portion" + i}
+                        id={`portion ${i + 1}`}
                         label="Portion"
                         type="text"
-                        placeholder='ex. "1 cup"'
+                        placeholder='ex. "1 cup | 25 g + 1/2 wet food"'
                       />
                     </div>
                   </div>
@@ -80,6 +97,13 @@ function Fidding() {
               ))}
           </ul>
         )}
+        {/* <input
+          type="text"
+          name="meals"
+          value={mealTime.join().toString() ?? ""}
+          readOnly
+          hidden
+        /> */}
         <div className="">
           <label
             htmlFor="foodrestrictions"
@@ -91,8 +115,8 @@ function Fidding() {
             id="foodrestrictions"
             name="foodrestrictions"
             maxLength={4000}
-            className="bg-lightyellow border-outline/30 focus:border-primary w-full resize-none overflow-auto rounded-t-xl border-0 border-b px-4 py-3 transition-all"
-            placeholder="List any sensitivities here..."
+            className="bg-lightyellow text-secondary border-outline/30 focus:border-primary w-full resize-none overflow-auto rounded-t-xl border-0 border-b px-4 py-3 transition-all"
+            placeholder="List any sensitivities here or feeding specifics..."
             rows={3}
           ></textarea>
         </div>

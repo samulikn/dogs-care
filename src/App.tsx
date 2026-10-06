@@ -21,9 +21,11 @@ function App() {
 
     const dogs = e.currentTarget;
     const formData = new FormData(dogs);
-
+    console.log( new URLSearchParams(
+          formData as unknown as Record<string, string>,
+        ).toString());
+        
     try {
-      // const pdf = await handleGeneratePDF;
       const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
