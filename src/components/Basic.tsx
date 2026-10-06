@@ -6,7 +6,7 @@ function Basic() {
   const [age, setAge] = useState<string | undefined>(undefined);
 
   const handleChangeAge = (value: string, i: number) => {
-    if (value) setAge(value);
+    if (value && i === 0) setAge(value);
   };
 
   return (
