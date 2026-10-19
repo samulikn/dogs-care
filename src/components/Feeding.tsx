@@ -2,35 +2,35 @@ import { useState } from "react";
 import DropdownList from "./DropdownList";
 import Input from "./Input";
 
-function Fidding() {
+function Feeding() {
   const [mealsPerDay, setMealsPerDay] = useState<number | undefined>(undefined);
-  const [mealTime, setMealTime] = useState<
+  const [meal, setMeal] = useState<
     { time: string | undefined; portion: string | undefined }[]
   >([]);
 
-  const setCountOfMeals = (value: string, i: number) => {
+  const setCountOfMeals = (value: string) => {
     const newN: number = Number(value);
-    const mealsArray = Array.from({ length: i }, () => ({
+    const mealsArray = Array.from({ length: newN }, () => ({
       time: undefined,
       portion: undefined,
     }));
     setMealsPerDay(newN);
-    setMealTime(mealsArray);
+    setMeal(mealsArray);
   };
 
-  const addMealTime = (value: string, i: number) => {
-    const updated = mealTime.map((v, index) =>
+  const setMealTime = (value: string, i: number) => {
+    const updated = meal.map((v, index) =>
       index === i ? { ...v, time: value } : v,
     );
-    setMealTime(updated);
+    setMeal(updated);
   };
 
-  // const addMealPortion = (value: string, id: number) => {
-  //   const filteredMeal = meals[id];
-  //   filteredMeal.portion = value;
-  //   const newMealsArray = { ...meals, filteredMeal };
-  //   setMeals(newMealsArray);
-  // };
+  const setMealPortion = (value: string, i: number) => {
+    const updated = meal.map((v, index) =>
+      index === i ? { ...v, portion: value } : v,
+    );
+    setMeal(updated);
+  };
 
   return (
     <>
@@ -39,13 +39,13 @@ function Fidding() {
           <DropdownList
             label={"How many meals per day?"}
             list={["1", "2", "3", "4"]}
-            id={["1", "2", "3", "4"].length}
-            setValue={setCountOfMeals}
+            value={mealsPerDay?.toString()}
+            onSelectChange={setCountOfMeals}
           />
           <input
             type="number"
             name="mealsPerDay"
-            value={mealsPerDay ?? 0}
+            value={mealsPerDay ?? ""}
             hidden
             readOnly
           />
@@ -56,11 +56,11 @@ function Fidding() {
               .fill([])
               .map((_, i) => (
                 <li
-                  key={"meal" + i}
+                  key={`meal-${i + 1}`}
                   className="[&_label]:text-secondary flex flex-nowrap gap-3 [&_div]:space-y-1 [&_label]:ml-1 [&_label]:text-sm [&_label]:font-semibold"
                 >
                   <p className="pt-8">{i + 1}.</p>
-                  <div className="flex w-full gap-4">
+                  <div className="flex w-full gap-3">
                     <DropdownList
                       label="Time slot"
                       list={[
@@ -81,15 +81,17 @@ function Fidding() {
                         "20:00 - 21:00",
                         "21:00 - 22:00",
                       ]}
-                      id={i}
-                      setValue={addMealTime}
+                      value={meal[i]?.time}
+                      onSelectChange={(selected) => setMealTime(selected, i)}
                     />
                     <div className="w-1/2 shrink-0">
                       <Input
-                        id={`portion ${i + 1}`}
+                        id={`portion-${i + 1}`}
                         label="Portion"
                         type="text"
                         placeholder='ex. "1 cup | 25 g + 1/2 wet food"'
+                        value={meal[i]?.portion ?? ""}
+                        onValueChange={(value) => setMealPortion(value, i)}
                       />
                     </div>
                   </div>
@@ -97,19 +99,19 @@ function Fidding() {
               ))}
           </ul>
         )}
-        {/* <input
+        <input
           type="text"
           name="meals"
-          value={mealTime.join().toString() ?? ""}
+          value={JSON.stringify(meal)}
           readOnly
           hidden
-        /> */}
+        />
         <div className="">
           <label
             htmlFor="foodrestrictions"
             className="text-secondary m-0 ml-1 text-sm font-semibold"
           >
-            Any food allergies, restrictions or fidding features?
+            Any food allergies, restrictions or feeding features?
           </label>
           <textarea
             id="foodrestrictions"
@@ -125,4 +127,4 @@ function Fidding() {
   );
 }
 
-export default Fidding;
+export default Feeding;

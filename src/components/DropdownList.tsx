@@ -4,13 +4,17 @@ import ArrowDropDown from "../assets/icons/arrow_drop_down.svg?react";
 type DropDownListProps = {
   label: string;
   list: string[];
-  id: number;
-  setValue: (value: string, i: number) => void;
+  value: string | undefined;
+  onSelectChange: (selected: string) => void;
 };
 
-function DropdownList({ label, list, id = 0, setValue }: DropDownListProps) {
+function DropdownList({
+  label,
+  list,
+  value,
+  onSelectChange,
+}: DropDownListProps) {
   const [open, setOpen] = useState<boolean>(false);
-  const [selected, setSelected] = useState<string | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,7 +44,7 @@ function DropdownList({ label, list, id = 0, setValue }: DropDownListProps) {
         onClick={() => setOpen(!open)}
         className="bg-lightyellow border-outline/30 focus:border-main text-brown-text relative m-0 h-10 w-full overflow-hidden rounded-t-xl border-0 border-b p-2 text-start transition-all"
       >
-        {selected ?? <p className="text-secondary/60">Select...</p>}
+        {value ?? <span className="text-secondary/60">Select...</span>}
         <ArrowDropDown className="absolute inset-y-1 right-0 flex h-8 w-8 items-center" />
       </button>
       {open && (
@@ -49,8 +53,7 @@ function DropdownList({ label, list, id = 0, setValue }: DropDownListProps) {
             <li
               key={option}
               onClick={() => {
-                setSelected(option);
-                setValue(option, id);
+                onSelectChange(option);
                 setOpen(false);
               }}
               className="cursor-pointer px-2 py-2 hover:bg-white hover:last:rounded-b-lg"
