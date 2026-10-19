@@ -53,30 +53,73 @@ function Activity() {
           Favourite activities?
         </h3>
         <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
-          <label htmlFor="fetch" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-2 py-2 transition-all hover:shadow-md">
-            <input id="fetch" name="favoriteActivity" value="Fetch"
-            className="hidden" type="checkbox" />
+          <label
+            htmlFor="fetch"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-2 py-2 transition-all hover:shadow-md"
+          >
+            <input
+              id="fetch"
+              name="favoriteActivity"
+              value="Fetch"
+              className="sr-only"
+              type="checkbox"
+            />
             <span className="text-sm font-medium">Fetch</span>
           </label>
-          <label htmlFor="tugofwar" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="tugofwar" name="favoriteActivity" className="hidden" type="checkbox" value="Tug of war" />
+          <label
+            htmlFor="tugofwar"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
+          >
+            <input
+              id="tugofwar"
+              name="favoriteActivity"
+              className="sr-only"
+              type="checkbox"
+              value="Tug of war"
+            />
             <span className="text-sm font-medium">Tug of war</span>
           </label>
-          <label htmlFor="training" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="training" name="favoriteActivity" className="hidden" type="checkbox" value="Agility/training" />
+          <label
+            htmlFor="training"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
+          >
+            <input
+              id="training"
+              name="favoriteActivity"
+              className="sr-only"
+              type="checkbox"
+              value="Agility/training"
+            />
             <span className="text-sm font-medium">Agility/training</span>
           </label>
-          <label htmlFor="running" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="running" name="favoriteActivity" className="hidden" type="checkbox" value="Free running" />
+          <label
+            htmlFor="running"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
+          >
+            <input
+              id="running"
+              name="favoriteActivity"
+              className="sr-only"
+              type="checkbox"
+              value="Free running"
+            />
             <span className="text-sm font-medium">Free running</span>
           </label>
-          <label htmlFor="swimming" className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md">
-            <input id="swimming" name="favoriteActivity" className="hidden" type="checkbox" value="Swimming" />
+          <label
+            htmlFor="swimming"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
+          >
+            <input
+              id="swimming"
+              name="favoriteActivity"
+              className="sr-only"
+              type="checkbox"
+              value="Swimming"
+            />
             <span className="text-sm font-medium">Swimming</span>
           </label>
         </div>
       </div>
-      {/* </div> */}
     </>
   );
 }

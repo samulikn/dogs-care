@@ -7,9 +7,9 @@ function Walking() {
     { time: string | undefined; duration: string | undefined }[]
   >([]);
 
-  const handleWalks = (value: string, i: number) => {
+  const handleWalks = (value: string) => {
     const newN: number = Number(value);
-    const walkArray = Array.from({ length: i }, () => ({
+    const walkArray = Array.from({ length: newN }, () => ({
       time: undefined,
       duration: undefined,
     }));
@@ -18,7 +18,6 @@ function Walking() {
   };
 
   const setWalkTime = (value: string, i: number) => {
-    // const updated = walk.map((prevValue,i) => {i === id ? prevValue.time = value : prevValue})
     const updated = walk.map((v, index) =>
       index === i ? { ...v, time: value } : v,
     );
@@ -26,7 +25,6 @@ function Walking() {
   };
 
   const setWalkDuration = (value: string, i: number) => {
-    // const updated = walk.map((prevValue,i) => {i === id ? prevValue.time = value : prevValue})
     const updated = walk.map((v, index) =>
       index === i ? { ...v, duration: value } : v,
     );
@@ -39,14 +37,14 @@ function Walking() {
         <DropdownList
           label={"How many walks per day?"}
           list={["1", "2", "3", "4", "5"]}
-          id={["1", "2", "3", "4", "5"].length}
-          setValue={handleWalks}
+          value={walksPerDay?.toString()}
+          onSelectChange={handleWalks}
         />
       </div>
       <input
         type="number"
-        name="mealsPerDay"
-        value={walksPerDay ?? 0}
+        name="walksPerDay"
+        value={walksPerDay ?? ""}
         hidden
         readOnly
       />
@@ -56,8 +54,7 @@ function Walking() {
             .fill([])
             .map((_, i) => (
               <li
-                key={"walk" + i}
-                // className="[&_label]:text-secondary grid grid-flow-col place-items-center gap-3 [&_div]:space-y-1"
+                key={`walk-${i + 1}`}
                 className="flex flex-nowrap gap-2 [&_div]:space-y-1"
               >
                 <p className="pt-8">{i + 1}.</p>
@@ -83,8 +80,8 @@ function Walking() {
                       "21:00 - 22:00",
                       "22:00 - 23:00",
                     ]}
-                    id={i}
-                    setValue={setWalkTime}
+                    value={walk[i]?.time}
+                    onSelectChange={(selected) => setWalkTime(selected, i)}
                   />
 
                   <DropdownList
@@ -96,8 +93,8 @@ function Walking() {
                       "45 - 60 min",
                       "> 1 h",
                     ]}
-                    id={i}
-                    setValue={setWalkDuration}
+                    value={walk[i]?.duration}
+                    onSelectChange={(selected) => setWalkDuration(selected, i)}
                   />
                 </div>
               </li>
@@ -107,7 +104,7 @@ function Walking() {
       <input
         type="text"
         name="walks"
-        value={walk.join("\n") ?? ""}
+        value={JSON.stringify(walk)}
         hidden
         readOnly
       />

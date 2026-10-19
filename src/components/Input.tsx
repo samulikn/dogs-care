@@ -5,9 +5,20 @@ type InputProps = {
   label: string;
   type: "text" | "number";
   placeholder: string;
+  required?: boolean;
+  value?: string | undefined;
+  onValueChange?: (value: string) => void;
 };
 
-function Input({ id, label, type, placeholder }: InputProps) {
+function Input({
+  id,
+  label,
+  type,
+  placeholder,
+  required = false,
+  value,
+  onValueChange,
+}: InputProps) {
   return (
     <div className="flex flex-col gap-1">
       <label
@@ -18,14 +29,13 @@ function Input({ id, label, type, placeholder }: InputProps) {
       </label>
       <input
         id={id}
-        name={id}
         type={type}
         placeholder={placeholder}
-        maxLength={20}
-        required
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          e.target.value;
-        }}
+        required={required}
+        value={value ?? ""}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onValueChange?.(e.target.value)
+        }
         className="bg-lightyellow border-outline/30 focus:border-main text-brown-text h-10 w-full appearance-none rounded-t-xl border-0 border-b p-2 transition-all"
       />
     </div>

@@ -51,7 +51,7 @@ function Social() {
               className="border-secondary h-5 w-5 cursor-pointer appearance-none rounded-full border-2 checked:border-6"
               name="social"
               type="radio"
-              value="Nervous around dog"
+              value="Nervous around dogs"
             />
           </label>
         </div>

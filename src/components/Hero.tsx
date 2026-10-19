@@ -3,10 +3,7 @@ import ProfilePhoto from "../assets/logo.svg?react";
 function Hero() {
   return (
     <section className="flex items-center justify-center gap-4 sm:gap-6">
-      {/* <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full shadow-sm">
-        <img src={ProfilePhoto} alt="profile photo" className="h-full w-full" />
-      </div> */}
-      <ProfilePhoto className="fill-primary h-20 w-20 shrink-0 rounded-full shadow-md"/>
+      <ProfilePhoto className="fill-primary h-20 w-20 shrink-0 rounded-full shadow-md" />
       <div>
         <h1 className="font-plus-jakarta text-primary mx-auto text-3xl font-extrabold tracking-tight">
           Tell us about your pup
