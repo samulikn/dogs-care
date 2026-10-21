@@ -1,6 +1,6 @@
 function Addinfo() {
   return (
-    <div className="">
+    <div className="flex flex-col gap-1">
       <label
         htmlFor="addinfo"
         className="text-secondary m-0 ml-1 text-sm font-semibold"
