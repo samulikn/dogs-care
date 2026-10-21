@@ -82,7 +82,7 @@ function App() {
             <Label legend={"Additional Info"} />
             <Addinfo />
           </fieldset>
-          <div className="pt-4">
+          <div className="py-4">
             <button
               type="submit"
               disabled={status === "sending"}
@@ -94,7 +94,7 @@ function App() {
           </div>
         </form>
       )}
-      <footer className="text-secondary my-3 text-center text-xs font-medium italic">
+      <footer className="text-secondary mt-auto mb-3 text-center text-xs font-medium italic">
         All data is used exclusively for providing better care for your pup.
       </footer>
     </main>

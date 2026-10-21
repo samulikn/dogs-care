@@ -59,7 +59,7 @@ function Feeding() {
                   key={`meal-${i + 1}`}
                   className="[&_label]:text-secondary flex flex-nowrap gap-3 [&_div]:space-y-1 [&_label]:ml-1 [&_label]:text-sm [&_label]:font-semibold"
                 >
-                  <p className="pt-8">{i + 1}.</p>
+                  <p className="pb-1 self-end">{i + 1}.</p>
                   <div className="flex w-full gap-3">
                     <DropdownList
                       label="Time slot"
@@ -106,7 +106,7 @@ function Feeding() {
           readOnly
           hidden
         />
-        <div className="">
+        <div className="flex flex-col gap-1">
           <label
             htmlFor="foodrestrictions"
             className="text-secondary m-0 ml-1 text-sm font-semibold"

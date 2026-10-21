@@ -57,7 +57,7 @@ function Walking() {
                 key={`walk-${i + 1}`}
                 className="flex flex-nowrap gap-2 [&_div]:space-y-1"
               >
-                <p className="pt-8">{i + 1}.</p>
+                <p className="pb-1 self-end">{i + 1}.</p>
                 <div className="flex w-full flex-nowrap gap-3">
                   <DropdownList
                     label={"Time slot"}
@@ -108,7 +108,7 @@ function Walking() {
         hidden
         readOnly
       />
-      <div className="">
+      <div className="flex flex-col gap-1">
         <label
           htmlFor="walkingspecifics"
           className="text-secondary m-0 ml-1 text-sm font-semibold"

@@ -18,7 +18,7 @@ function Basic() {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Input
           id="dogname"
           label="Dog's name *"
