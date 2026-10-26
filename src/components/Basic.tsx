@@ -29,9 +29,10 @@ function Basic() {
           onValueChange={handleChangeDogname}
         />
         <DropdownList
-          label={"Age in years"}
+          label={"Age in years *"}
           list={["under 1 year", "1 - 2 years", "3 - 7 years", "8+ years"]}
           value={dog.age}
+          required
           onSelectChange={handleChangeAge}
         />
         <input
