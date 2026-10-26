@@ -37,10 +37,11 @@ function Feeding() {
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <DropdownList
-            label={"How many meals per day?"}
+            label={"How many meals per day? *"}
             list={["1", "2", "3", "4"]}
             value={mealsPerDay?.toString()}
             onSelectChange={setCountOfMeals}
+            required
           />
           <input
             type="number"

@@ -35,10 +35,11 @@ function Walking() {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2">
         <DropdownList
-          label={"How many walks per day?"}
+          label={"How many walks per day? *"}
           list={["1", "2", "3", "4", "5"]}
           value={walksPerDay?.toString()}
           onSelectChange={handleWalks}
+          required
         />
       </div>
       <input
