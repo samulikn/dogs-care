@@ -9,7 +9,7 @@ function Walking() {
 
   const handleWalks = (value: string) => {
     const newN: number = Number(value);
-    const walkArray = Array.from({ length: newN }, () => ({
+    const walkArray = Array.from({ length: newN }, (_, i) => (walk[i] ?? {
       time: undefined,
       duration: undefined,
     }));

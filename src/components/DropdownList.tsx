@@ -29,7 +29,7 @@ function DropdownList({
   }, [required, value]);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e: PointerEvent) => {
       if (
         containerRef.current &&
         !containerRef.current.contains(e.target as Node)
@@ -39,11 +39,11 @@ function DropdownList({
     };
 
     if (open) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("pointerdown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("pointerdown", handleClickOutside);
     };
   }, [open]);
 
@@ -68,6 +68,7 @@ function DropdownList({
           tabIndex={-1}
           autoComplete="off"
           aria-label={label}
+          inputMode="none"
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px opacity-0"
         />
       )}

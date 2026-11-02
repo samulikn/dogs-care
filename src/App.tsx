@@ -93,7 +93,7 @@ function App() {
                 Send Questionnaire
               </button>
               {status === "error" && (
-                <p className="text-error text-center">
+                <p  role="alert" className="text-error text-center">
                   Something went wrong. Try again.
                 </p>
               )}

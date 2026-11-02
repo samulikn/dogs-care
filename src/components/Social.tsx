@@ -4,10 +4,10 @@ import Nervous from "../assets/icons/nervous.svg?react";
 
 function Social() {
   return (
-    <div className="flex flex-col gap-1">
-      <h3 className="text-secondary m-0 ml-1 text-sm font-semibold">
+    <fieldset className="">
+      <legend className="text-secondary mb-1 ml-1 text-sm font-semibold">
         Comfortable with other dogs? *
-      </h3>
+      </legend>
       <div className="flex flex-col gap-3">
         <label className="bg-radio-container border-outline/10 hover:bg-lightyellow flex cursor-pointer items-center justify-between rounded-xl border p-4 hover:shadow-md">
           <div className="text-primary flex items-center gap-3">
@@ -58,7 +58,7 @@ function Social() {
           />
         </label>
       </div>
-    </div>
+    </fieldset>
   );
 }
 

@@ -10,10 +10,14 @@ function Feeding() {
 
   const setCountOfMeals = (value: string) => {
     const newN: number = Number(value);
-    const mealsArray = Array.from({ length: newN }, () => ({
-      time: undefined,
-      portion: undefined,
-    }));
+    const mealsArray = Array.from(
+      { length: newN },
+      (_, i) =>
+        meal[i] ?? {
+          time: undefined,
+          portion: undefined,
+        },
+    );
     setMealsPerDay(newN);
     setMeal(mealsArray);
   };
@@ -35,7 +39,8 @@ function Feeding() {
   return (
     <>
       <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* <div className="grid grid-cols-2 md:grid-cols-3"> */}
+        <div className="flex w-3/5 flex-nowrap md:w-1/3">
           <DropdownList
             label={"How many meals per day? *"}
             list={["1", "2", "3", "4"]}
@@ -58,10 +63,10 @@ function Feeding() {
               .map((_, i) => (
                 <li
                   key={`meal-${i + 1}`}
-                  className="[&_label]:text-secondary flex flex-nowrap gap-3 [&_div]:space-y-1 [&_label]:ml-1 [&_label]:text-sm [&_label]:font-semibold"
+                  className="[&_label]:text-secondary border-outline/30 flex flex-nowrap gap-1 rounded-t-xl border-2 p-2 md:gap-3 [&_div]:space-y-1 [&_label]:ml-1 [&_label]:text-sm [&_label]:font-semibold md:border-none"
                 >
-                  <p className="pb-1 self-end">{i + 1}.</p>
-                  <div className="flex w-full gap-3">
+                  <p className="w-5 self-end pb-1">{i + 1}.</p>
+                  <div className="flex w-full flex-col gap-1 md:flex-row md:gap-3">
                     <DropdownList
                       label="Time slot"
                       list={[
@@ -85,7 +90,7 @@ function Feeding() {
                       value={meal[i]?.time}
                       onSelectChange={(selected) => setMealTime(selected, i)}
                     />
-                    <div className="w-1/2 shrink-0">
+                    <div className="shrink-0 md:w-1/2">
                       <Input
                         id={`portion-${i + 1}`}
                         label="Portion"
