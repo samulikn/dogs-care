@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DropdownList from "./DropdownList";
-import { time, sessions } from "./Feeding";
+import { time, sessions} from "../data/lists"
 
 function Walking() {
   const [walksPerDay, setWalksPerDay] = useState<number | undefined>(undefined);

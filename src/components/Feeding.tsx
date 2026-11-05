@@ -1,27 +1,7 @@
 import { useState } from "react";
 import DropdownList from "./DropdownList";
 import Input from "./Input";
-
-export const time: string[] = [
-  "6:00 - 7:00",
-  "7:00 - 8:00",
-  "8:00 - 9:00",
-  "9:00 - 10:00",
-  "10:00 - 11:00",
-  "11:00 - 12:00",
-  "12:00 - 13:00",
-  "13:00 - 14:00",
-  "14:00 - 15:00",
-  "15:00 - 16:00",
-  "16:00 - 17:00",
-  "17:00 - 18:00",
-  "18:00 - 19:00",
-  "19:00 - 20:00",
-  "20:00 - 21:00",
-  "21:00 - 22:00",
-  "22:00 - 23:00",
-];
-export const sessions: string[] = ["1", "2", "3", "4", "5"];
+import { time, sessions} from "../data/lists"
 
 function Feeding() {
   const [mealsPerDay, setMealsPerDay] = useState<number | undefined>(undefined);
@@ -58,81 +38,81 @@ function Feeding() {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex w-3/5 flex-nowrap md:w-1/3">
-        <DropdownList
-          label={"How many meals per day? *"}
-          list={sessions}
-          value={mealsPerDay?.toString()}
-          onSelectChange={setCountOfMeals}
-          required
-        />
-        <input
-          type="number"
-          name="mealsPerDay"
-          value={mealsPerDay ?? ""}
-          hidden
-          readOnly
-        />
-      </div>
-      {mealsPerDay && (
-        <ul className="flex flex-col gap-3">
-          {Array(mealsPerDay)
-            .fill([])
-            .map((_, i) => (
-              <li
-                key={`meal-${i + 1}`}
-                className="[&_label]:text-secondary border-outline/30 flex flex-nowrap items-center justify-center gap-1 rounded-xl border-2 p-2 shadow-md md:gap-3 [&_div]:space-y-1 [&_label]:ml-1 [&_label]:text-sm [&_label]:font-semibold"
-              >
-                <div className="bg-lightyellow flex h-8 w-8 shrink-0 items-center justify-center self-start rounded-full">
-                  <p className="text-secondary text-sm font-bold">{i + 1}.</p>
-                </div>
-                <div className="flex w-full flex-col gap-1 md:flex-row md:gap-3">
-                  <DropdownList
-                    label="Time slot"
-                    list={time}
-                    value={meal[i]?.time}
-                    onSelectChange={(selected) => setMealTime(selected, i)}
-                  />
-                  <div className="shrink-0 md:w-1/2">
-                    <Input
-                      id={`portion-${i + 1}`}
-                      label="Portion"
-                      type="text"
-                      placeholder='ex. "1 cup | 25 g + 1/2 wet food"'
-                      value={meal[i]?.portion ?? ""}
-                      onValueChange={(value) => setMealPortion(value, i)}
-                    />
+      <div className="flex flex-col gap-4">
+        <div className="flex w-3/5 flex-nowrap md:w-1/3">
+          <DropdownList
+            label={"How many meals per day? *"}
+            list={sessions}
+            value={mealsPerDay?.toString()}
+            onSelectChange={setCountOfMeals}
+            required
+          />
+          <input
+            type="number"
+            name="mealsPerDay"
+            value={mealsPerDay ?? ""}
+            hidden
+            readOnly
+          />
+        </div>
+        {mealsPerDay && (
+          <ul className="flex flex-col gap-3">
+            {Array(mealsPerDay)
+              .fill([])
+              .map((_, i) => (
+                <li
+                  key={`meal-${i + 1}`}
+                  className="[&_label]:text-secondary border-outline/30 flex flex-nowrap items-center justify-center gap-1 rounded-xl border-2 p-2 shadow-md md:gap-3 [&_div]:space-y-1 [&_label]:ml-1 [&_label]:text-sm [&_label]:font-semibold"
+                >
+                  <div className="bg-lightyellow flex h-8 w-8 shrink-0 items-center justify-center self-start rounded-full">
+                    <p className="text-secondary text-sm font-bold">{i + 1}.</p>
                   </div>
-                </div>
-              </li>
-            ))}
-        </ul>
-      )}
-      <input
-        type="text"
-        name="meals"
-        value={JSON.stringify(meal)}
-        readOnly
-        hidden
-      />
-      <div className="flex flex-col gap-1">
-        <label
-          htmlFor="foodrestrictions"
-          className="text-secondary m-0 ml-1 text-sm font-semibold"
-        >
-          Any food allergies, restrictions or feeding features?
-        </label>
-        <textarea
-          id="foodrestrictions"
-          name="foodrestrictions"
-          maxLength={4000}
-          className="bg-lightyellow text-secondary border-outline/30 focus:border-primary w-full resize-none overflow-auto rounded-t-xl border-0 border-b px-4 py-3 transition-all"
-          placeholder="List any sensitivities here or feeding specifics..."
-          rows={3}
-        ></textarea>
+                  <div className="flex w-full flex-col gap-1 md:flex-row md:gap-3">
+                    <DropdownList
+                      label="Time slot"
+                      list={time}
+                      value={meal[i]?.time}
+                      onSelectChange={(selected) => setMealTime(selected, i)}
+                    />
+                    <div className="shrink-0 md:w-1/2">
+                      <Input
+                        id={`portion-${i + 1}`}
+                        label="Portion"
+                        type="text"
+                        placeholder='ex. "1 cup | 25 g + 1/2 wet food"'
+                        value={meal[i]?.portion ?? ""}
+                        onValueChange={(value) => setMealPortion(value, i)}
+                      />
+                    </div>
+                  </div>
+                </li>
+              ))}
+          </ul>
+        )}
+        <input
+          type="text"
+          name="meals"
+          value={JSON.stringify(meal)}
+          readOnly
+          hidden
+        />
+        <div className="flex flex-col gap-1">
+          <label
+            htmlFor="foodrestrictions"
+            className="text-secondary m-0 ml-1 text-sm font-semibold"
+          >
+            Any food allergies, restrictions or feeding features?
+          </label>
+          <textarea
+            id="foodrestrictions"
+            name="foodrestrictions"
+            maxLength={4000}
+            className="bg-lightyellow text-secondary border-outline/30 focus:border-primary w-full resize-none overflow-auto rounded-t-xl border-0 border-b px-4 py-3 transition-all"
+            placeholder="List any sensitivities here or feeding specifics..."
+            rows={3}
+          ></textarea>
+        </div>
       </div>
-    </div>
   );
 }
 

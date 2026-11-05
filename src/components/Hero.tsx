@@ -11,7 +11,7 @@ function Hero() {
         <h1 className="font-plus-jakarta text-primary mx-auto text-3xl font-extrabold tracking-tight">
           Tell us about your pup
         </h1>
-        <p aria-hidden="true" className="text-secondary font-medium">
+        <p className="text-secondary font-medium">
           Help us make your dog feel at home.
         </p>
       </div>

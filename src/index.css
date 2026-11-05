@@ -5,7 +5,7 @@
   --font-vietnam-pro: "Be Vietnam Pro", sans-serif;
 
   --color-background: #fff4ef;
-  --color-label-tag: #f9d461;
+  /* --color-label-tag: #f9d461; */
   --color-brown-text: #492604;
   --color-primary: #492604;
   --color-secondary: #7e522c;
@@ -16,7 +16,7 @@
   --color-friendly: #526700ff;
   --color-selective: #005ab2;
   --color-nervous: #b02500;
-  --color-selected: #00468e;
+  /* --color-selected: #00468e; */
   --color-error: #b92902;
 }
 
