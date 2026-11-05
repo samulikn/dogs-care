@@ -1,7 +1,7 @@
 import Basic from "./components/Basic";
 import Feeding from "./components/Feeding";
 import Hero from "./components/Hero";
-import Label from "./components/Label";
+import Legend from "./components/Legend";
 import Walking from "./components/Walking";
 import Activity from "./components/Activity";
 import Social from "./components/Social";
@@ -43,63 +43,61 @@ function App() {
       {status === "done" ? (
         <Success />
       ) : (
-        <>
-          <form
-            name="dogs-questionnaire"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            onSubmit={handleSubmit}
-            className="space-y-12"
-          >
-            <input type="hidden" name="form-name" value="dogs-questionnaire" />
-            <p className="hidden" aria-hidden="true">
-              <label>
-                Don't fill this out:{" "}
-                <input name="bot-field" tabIndex={-1} autoComplete="off" />
-              </label>
-            </p>
-            <p className="text-primary mb-1 text-right text-xs">* required</p>
-            <fieldset className="space-y-6">
-              <Label legend={"Basic info"} />
-              <Basic />
-            </fieldset>
-            <fieldset className="space-y-6">
-              <Label legend={"Feeding Habits & Diet"} />
-              <Feeding />
-            </fieldset>
-            <fieldset className="space-y-6">
-              <Label legend={"Exercise & Activity Level"} />
-              <Activity />
-            </fieldset>
-            <fieldset className="space-y-6">
-              <Label legend={"Walking Routine"} />
-              <Walking />
-            </fieldset>
-            <fieldset className="space-y-6">
-              <Label legend={"Social Behaviour"} />
-              <Social />
-            </fieldset>
-            <fieldset className="space-y-6">
-              <Label legend={"Additional Info"} />
-              <Addinfo />
-            </fieldset>
-            <div className="py-4">
-              <button
-                type="submit"
-                disabled={status === "sending"}
-                className="bg-primary w-full rounded-full border-2 py-5 text-lg font-extrabold text-white shadow-md transition-all hover:scale-[1.02] active:scale-[0.98]"
-              >
-                Send Questionnaire
-              </button>
-              {status === "error" && (
-                <p className="text-error text-center">
-                  Something went wrong. Try again.
-                </p>
-              )}
-            </div>
-          </form>
-        </>
+        <form
+          name="dogs-questionnaire"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+          className="space-y-12"
+        >
+          <input type="hidden" name="form-name" value="dogs-questionnaire" />
+          <p className="hidden" aria-hidden="true">
+            <label>
+              Don't fill this out:{" "}
+              <input name="bot-field" tabIndex={-1} autoComplete="off" />
+            </label>
+          </p>
+          <p className="text-primary mb-1 text-right text-xs">* required</p>
+          <fieldset className="space-y-6">
+            <Legend text={"Basic info"} />
+            <Basic />
+          </fieldset>
+          <fieldset className="space-y-6">
+            <Legend text={"Feeding Habits & Diet"} />
+            <Feeding />
+          </fieldset>
+          <fieldset className="space-y-6">
+            <Legend text={"Exercise & Activity Level"} />
+            <Activity />
+          </fieldset>
+          <fieldset className="space-y-6">
+            <Legend text={"Walking Routine"} />
+            <Walking />
+          </fieldset>
+          <fieldset className="space-y-6">
+            <Legend text={"Social Behaviour"} />
+            <Social />
+          </fieldset>
+          <fieldset className="space-y-6">
+            <Legend text={"Additional Info"} />
+            <Addinfo />
+          </fieldset>
+          <div className="py-4">
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="bg-primary w-full rounded-full border-2 py-5 text-lg font-extrabold text-white shadow-md transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              Send Questionnaire
+            </button>
+            {status === "error" && (
+              <p role="alert" className="text-error text-center">
+                Something went wrong. Try again.
+              </p>
+            )}
+          </div>
+        </form>
       )}
       <footer className="text-secondary mt-auto mb-3 text-center text-xs font-medium italic">
         All data is used exclusively for providing better care for your pup.

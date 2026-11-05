@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DropdownList from "./DropdownList";
+import { time, sessions} from "../data/lists"
 
 function Walking() {
   const [walksPerDay, setWalksPerDay] = useState<number | undefined>(undefined);
@@ -9,10 +10,14 @@ function Walking() {
 
   const handleWalks = (value: string) => {
     const newN: number = Number(value);
-    const walkArray = Array.from({ length: newN }, () => ({
-      time: undefined,
-      duration: undefined,
-    }));
+    const walkArray = Array.from(
+      { length: newN },
+      (_, i) =>
+        walk[i] ?? {
+          time: undefined,
+          duration: undefined,
+        },
+    );
     setWalksPerDay(newN);
     setWalk(walkArray);
   };
@@ -32,11 +37,11 @@ function Walking() {
   };
 
   return (
-    <>
-      <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="flex flex-col gap-4">
+      <div className="flex w-3/5 flex-nowrap md:w-1/3">
         <DropdownList
           label={"How many walks per day? *"}
-          list={["1", "2", "3", "4", "5"]}
+          list={sessions}
           value={walksPerDay?.toString()}
           onSelectChange={handleWalks}
           required
@@ -56,31 +61,15 @@ function Walking() {
             .map((_, i) => (
               <li
                 key={`walk-${i + 1}`}
-                className="flex flex-nowrap gap-2 [&_div]:space-y-1"
+                className="[&_div]:text-secondary border-outline/30 flex flex-nowrap items-center justify-center gap-1 rounded-xl border-2 p-2 shadow-md md:gap-3 [&_div]:space-y-1"
               >
-                <p className="pb-1 self-end">{i + 1}.</p>
-                <div className="flex w-full flex-nowrap gap-3">
+                <div className="bg-lightyellow flex h-8 w-8 shrink-0 items-center justify-center self-start rounded-full">
+                  <p className="text-secondary text-sm font-bold">{i + 1}.</p>
+                </div>
+                <div className="flex w-full flex-col gap-1 md:flex-row md:gap-3">
                   <DropdownList
                     label={"Time slot"}
-                    list={[
-                      "6:00 - 7:00",
-                      "7:00 - 8:00",
-                      "8:00 - 9:00",
-                      "9:00 - 10:00",
-                      "10:00 - 11:00",
-                      "11:00 - 12:00",
-                      "12:00 - 13:00",
-                      "13:00 - 14:00",
-                      "14:00 - 15:00",
-                      "15:00 - 16:00",
-                      "16:00 - 17:00",
-                      "17:00 - 18:00",
-                      "18:00 - 19:00",
-                      "19:00 - 20:00",
-                      "20:00 - 21:00",
-                      "21:00 - 22:00",
-                      "22:00 - 23:00",
-                    ]}
+                    list={time}
                     value={walk[i]?.time}
                     onSelectChange={(selected) => setWalkTime(selected, i)}
                   />
@@ -125,7 +114,7 @@ function Walking() {
           rows={3}
         ></textarea>
       </div>
-    </>
+    </div>
   );
 }
 

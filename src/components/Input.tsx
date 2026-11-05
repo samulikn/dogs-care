@@ -3,7 +3,7 @@ import React from "react";
 type InputProps = {
   id: string;
   label: string;
-  type: "text" | "number";
+  type: "text";
   placeholder: string;
   required?: boolean;
   value?: string | undefined;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DropdownList from "./DropdownList";
 import Input from "./Input";
+import { time, sessions} from "../data/lists"
 
 function Feeding() {
   const [mealsPerDay, setMealsPerDay] = useState<number | undefined>(undefined);
@@ -10,10 +11,14 @@ function Feeding() {
 
   const setCountOfMeals = (value: string) => {
     const newN: number = Number(value);
-    const mealsArray = Array.from({ length: newN }, () => ({
-      time: undefined,
-      portion: undefined,
-    }));
+    const mealsArray = Array.from(
+      { length: newN },
+      (_, i) =>
+        meal[i] ?? {
+          time: undefined,
+          portion: undefined,
+        },
+    );
     setMealsPerDay(newN);
     setMeal(mealsArray);
   };
@@ -33,12 +38,11 @@ function Feeding() {
   };
 
   return (
-    <>
       <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="flex w-3/5 flex-nowrap md:w-1/3">
           <DropdownList
             label={"How many meals per day? *"}
-            list={["1", "2", "3", "4"]}
+            list={sessions}
             value={mealsPerDay?.toString()}
             onSelectChange={setCountOfMeals}
             required
@@ -58,34 +62,19 @@ function Feeding() {
               .map((_, i) => (
                 <li
                   key={`meal-${i + 1}`}
-                  className="[&_label]:text-secondary flex flex-nowrap gap-3 [&_div]:space-y-1 [&_label]:ml-1 [&_label]:text-sm [&_label]:font-semibold"
+                  className="[&_label]:text-secondary border-outline/30 flex flex-nowrap items-center justify-center gap-1 rounded-xl border-2 p-2 shadow-md md:gap-3 [&_div]:space-y-1 [&_label]:ml-1 [&_label]:text-sm [&_label]:font-semibold"
                 >
-                  <p className="pb-1 self-end">{i + 1}.</p>
-                  <div className="flex w-full gap-3">
+                  <div className="bg-lightyellow flex h-8 w-8 shrink-0 items-center justify-center self-start rounded-full">
+                    <p className="text-secondary text-sm font-bold">{i + 1}.</p>
+                  </div>
+                  <div className="flex w-full flex-col gap-1 md:flex-row md:gap-3">
                     <DropdownList
                       label="Time slot"
-                      list={[
-                        "6:00 - 7:00",
-                        "7:00 - 8:00",
-                        "8:00 - 9:00",
-                        "9:00 - 10:00",
-                        "10:00 - 11:00",
-                        "11:00 - 12:00",
-                        "12:00 - 13:00",
-                        "13:00 - 14:00",
-                        "14:00 - 15:00",
-                        "15:00 - 16:00",
-                        "16:00 - 17:00",
-                        "17:00 - 18:00",
-                        "18:00 - 19:00",
-                        "19:00 - 20:00",
-                        "20:00 - 21:00",
-                        "21:00 - 22:00",
-                      ]}
+                      list={time}
                       value={meal[i]?.time}
                       onSelectChange={(selected) => setMealTime(selected, i)}
                     />
-                    <div className="w-1/2 shrink-0">
+                    <div className="shrink-0 md:w-1/2">
                       <Input
                         id={`portion-${i + 1}`}
                         label="Portion"
@@ -124,7 +113,6 @@ function Feeding() {
           ></textarea>
         </div>
       </div>
-    </>
   );
 }
 

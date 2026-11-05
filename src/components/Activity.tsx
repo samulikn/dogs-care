@@ -5,14 +5,17 @@ import BoostEnergyLevel from "../assets/icons/electric_bolt.svg?react";
 function Activity() {
   return (
     <>
-      <div className="flex flex-col gap-1">
-        <h3 className="text-secondary m-0 ml-1 text-sm font-semibold">
+      <fieldset>
+        <legend className="text-secondary mb-1 ml-1 text-sm font-semibold">
           Activity level? *
-        </h3>
+        </legend>
         <div className="flex flex-col gap-3">
           <label className="bg-radio-container border-outline/10 hover:bg-lightyellow flex cursor-pointer items-center justify-between rounded-xl border p-4 hover:shadow-md">
             <div className="text-primary flex items-center gap-3">
-              <SaveEnergyLevel className="bg-outline/30 fill-primary/70 h-8 w-8 shrink-0 rounded-full p-0.5" />
+              <SaveEnergyLevel
+                aria-hidden="true"
+                className="bg-outline/30 fill-primary/70 h-8 w-8 shrink-0 rounded-full p-0.5"
+              />
               <p className="font-medium">Low, couch potato</p>
             </div>
             <input
@@ -25,7 +28,10 @@ function Activity() {
           </label>
           <label className="bg-radio-container border-outline/10 hover:bg-lightyellow flex cursor-pointer items-center justify-between rounded-xl border p-4 hover:shadow-md">
             <div className="text-primary flex items-center gap-3">
-              <ModerateLevel className="bg-outline/30 fill-primary/70 h-8 w-8 shrink-0 rounded-full p-0.5" />
+              <ModerateLevel
+                aria-hidden="true"
+                className="bg-outline/30 fill-primary/70 h-8 w-8 shrink-0 rounded-full p-0.5"
+              />
               <p className="font-medium">Moderate</p>
             </div>
             <input
@@ -38,7 +44,10 @@ function Activity() {
           </label>
           <label className="bg-radio-container border-outline/10 hover:bg-lightyellow flex cursor-pointer items-center justify-between rounded-xl border p-4 hover:shadow-md">
             <div className="text-primary flex items-center gap-3">
-              <BoostEnergyLevel className="bg-outline/30 fill-primary/70 h-8 w-8 shrink-0 rounded-full p-0.5" />
+              <BoostEnergyLevel
+                aria-hidden="true"
+                className="bg-outline/30 fill-primary/70 h-8 w-8 shrink-0 rounded-full p-0.5"
+              />
               <p className="font-medium">High, always running</p>
             </div>
             <input
@@ -50,7 +59,7 @@ function Activity() {
             />
           </label>
         </div>
-      </div>
+      </fieldset>
       <div className="flex flex-col gap-1">
         <h3 className="text-secondary m-0 ml-1 text-sm font-semibold">
           Favourite activities?
@@ -58,7 +67,7 @@ function Activity() {
         <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
           <label
             htmlFor="fetch"
-            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-2 py-2 transition-all hover:shadow-md"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary has-focus-visible:border-secondary hover:bg-lightyellow cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
           >
             <input
               id="fetch"
@@ -71,7 +80,7 @@ function Activity() {
           </label>
           <label
             htmlFor="tugofwar"
-            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary has-focus-visible:border-secondary hover:bg-lightyellow cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
           >
             <input
               id="tugofwar"
@@ -84,7 +93,7 @@ function Activity() {
           </label>
           <label
             htmlFor="training"
-            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary has-focus-visible:border-secondary hover:bg-lightyellow cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
           >
             <input
               id="training"
@@ -97,7 +106,7 @@ function Activity() {
           </label>
           <label
             htmlFor="running"
-            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary has-focus-visible:border-secondary hover:bg-lightyellow cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
           >
             <input
               id="running"
@@ -110,7 +119,7 @@ function Activity() {
           </label>
           <label
             htmlFor="swimming"
-            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
+            className="border-outline/30 bg-radio-container has-checked:bg-lightyellow has-checked:border-secondary has-focus-visible:border-secondary hover:bg-lightyellow cursor-pointer rounded-full border-2 px-4 py-2 transition-all hover:shadow-md"
           >
             <input
               id="swimming"
